@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Listing Radar</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="band">
+    <div class="top">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.5"/>
+          <path d="M12 12 L12 2 A10 10 0 0 1 21.5 8.9 Z" fill="#F2A100" fill-opacity=".85"/>
+          <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+        </svg>
+        <h1>Listing Radar</h1>
+      </div>
+      <button id="checkNow" class="primary" title="Check all searches now">Check now</button>
+    </div>
+    <div id="status" class="status">Waiting for first check…</div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button id="tabFinds" role="tab" aria-selected="true" class="on">Finds</button>
+    <button id="tabSearches" role="tab" aria-selected="false">Searches</button>
+    <button id="tabSettings" role="tab" aria-selected="false">Settings</button>
+  </nav>
+
+  <main>
+    <section id="pFinds" role="tabpanel">
+      <ul id="recent" class="finds"></ul>
+      <p id="noRecent" class="empty">Nothing new yet. New listings from your searches show up here.</p>
+    </section>
+
+    <section id="pSearches" role="tabpanel" hidden>
+      <ul id="list"></ul>
+      <p id="empty" class="empty" hidden>No searches yet. Add one below.</p>
+
+      <details id="addBox" class="add">
+        <summary>Add a search</summary>
+        <p class="muted small">Set your filters on the marketplace, then paste the page URL here.</p>
+        <input id="url" type="url" placeholder="https://www.vinted.it/catalog?search_text=...">
+        <input id="name" type="text" placeholder="Name (optional)">
+        <div class="row">
+          <button id="useTab" hidden>Use current tab</button>
+          <button id="add" class="primary">Add search</button>
+        </div>
+        <div id="addMsg" class="muted small"></div>
+      </details>
+    </section>
+
+    <section id="pSettings" role="tabpanel" hidden>
+      <h2>How often to check</h2>
+      <div id="intervalBox"></div>
+      <p id="intervalHelp" class="muted small"></p>
+
+      <h2>Notifications</h2>
+      <div class="row start"><button id="testNotif">Send test notification</button></div>
+
+      <details id="tgBox" class="group">
+        <summary>Telegram forwarding (optional)</summary>
+        <p class="muted small">Get every new listing in Telegram too. Stored only in this browser profile.</p>
+        <details id="tgGuide" class="guide">
+          <summary>New to this? Step-by-step guide</summary>
+          <ol>
+            <li>Open Telegram and start a chat with <a href="https://t.me/BotFather" target="_blank" rel="noopener">BotFather</a> (the official bot, with a blue check).</li>
+            <li>Send <code>/newbot</code>. Pick a name, then a username that ends in <code>bot</code>.</li>
+            <li>BotFather replies with a long message. Under "Use this token to access the HTTP API" is your <b>Token API</b>, like <code>123456:ABC…</code>. Copy it and paste it into "Token API" below (pasting the whole message also works).</li>
+            <li>Open your new bot in Telegram (BotFather gave you a <code>t.me/…</code> link), press <b>Start</b> and send it any message, for example "hi". This is how the extension learns where to send alerts.</li>
+            <li>Come back here, tick <b>Enabled</b> and press <b>Save</b>. The extension finds your chat id by itself. Then press <b>Send test</b>.</li>
+          </ol>
+          <p class="muted small">Tip: make a new bot for this extension instead of reusing another one. Never share the token with anyone.</p>
+        </details>
+        <label class="check"><input type="checkbox" id="tgEnabled"> Enabled</label>
+        <input id="tgToken" type="text" placeholder="Token API (from BotFather)" autocomplete="off" spellcheck="false">
+        <div id="tgChatInfo" class="muted small" style="margin-bottom:6px"></div>
+        <input id="tgChatManual" type="text" placeholder="Chat id (only needed if asked)" autocomplete="off" spellcheck="false" hidden>
+        <div class="row"><button id="tgReset" hidden title="Use the chat that most recently wrote to your bot">Use my latest chat</button><button id="tgTest">Send test</button><button id="tgSave" class="primary">Save</button></div>
+        <div id="tgMsg" class="muted small"></div>
+      </details>
+
+      <footer>
+        <a id="donate" href="#" target="_blank" rel="noopener">☕ Support this project</a>
+        <a id="source" href="#" target="_blank" rel="noopener">Source (AGPL-3.0)</a>
+        <p class="muted small">Unofficial. Not affiliated with or endorsed by Vinted. Automated access may be contrary to the site's terms.</p>
+      </footer>
+    </section>
+  </main>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

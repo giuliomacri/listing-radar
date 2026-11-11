@@ -1,0 +1,5 @@
+safari-build/
+safari-xcode/
+firefox-build/
+*.zip
+test/preview/

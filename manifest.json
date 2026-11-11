@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "Listing Radar",
+  "version": "0.1.0",
+  "description": "Unofficial. Instant desktop alerts for new second-hand listings matching your saved searches. Not affiliated with Vinted.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "optional_host_permissions": [
+    "https://*.vinted.fr/*",
+    "https://*.vinted.de/*",
+    "https://*.vinted.it/*",
+    "https://*.vinted.es/*",
+    "https://*.vinted.nl/*",
+    "https://*.vinted.pl/*",
+    "https://*.vinted.be/*",
+    "https://*.vinted.lt/*",
+    "https://*.vinted.cz/*",
+    "https://*.vinted.at/*",
+    "https://*.vinted.pt/*",
+    "https://*.vinted.lu/*",
+    "https://*.vinted.sk/*",
+    "https://*.vinted.hu/*",
+    "https://*.vinted.ro/*",
+    "https://*.vinted.hr/*",
+    "https://*.vinted.fi/*",
+    "https://*.vinted.dk/*",
+    "https://*.vinted.se/*",
+    "https://*.vinted.gr/*",
+    "https://*.vinted.ie/*",
+    "https://*.vinted.co.uk/*",
+    "https://*.vinted.com/*",
+    "https://*.vinted.net/*",
+    "https://api.telegram.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Listing Radar",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "homepage_url": "https://github.com/giuliomacri/listing-radar",
+  "author": "Giulio Macri"
+}
